@@ -25,3 +25,71 @@ h1 {
     align-items: center;
     gap: 10px;
 }
+
+button {
+    background-color: #ccc;
+    padding: 5px;
+    /* border-radius: 0px; */
+}
+
+.section {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,.01);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.section.section--contact {
+    background: #0001ab;
+    width: 100%;
+    height: 100%;
+}
+
+.scanlines {
+    width: 100%;
+    height: 100%;
+}
+
+.scanlines, .scanlines:after, .scanlines:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* pointer-events: none; */
+}
+
+
+.scanlines:before {
+    /* background: -webkit-gradient(linear,left top,left bottom,color-stop(50%,rgba(18,16,16,0)),color-stop(50%,rgba(0,0,0,.25))),-webkit-gradient(linear,left top,right top,from(rgba(255,0,0,.06)),color-stop(rgba(0,255,0,.02)),to(rgba(0,0,255,.06)));
+    background: -webkit-linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.25) 50%),-webkit-linear-gradient(left,rgba(255,0,0,.06),rgba(0,255,0,.02),rgba(0,0,255,.06));
+    background: -o-linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.25) 50%),-o-linear-gradient(left,rgba(255,0,0,.06),rgba(0,255,0,.02),rgba(0,0,255,.06)); */
+    background: linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.25) 50%),linear-gradient(
+90deg
+,rgba(255,0,0,.06),rgba(0,255,0,.02),rgba(0,0,255,.06));
+    z-index: 1;
+    background-size: 100% 3px,3px 100%;
+}
+
+.scanlines:after, .scanlines:before {
+    content: " ";
+    display: block;
+    bottom: 0;
+}
+
+.scanlines:after {
+    background: rgba(18,16,16,.14);
+    opacity: 0;
+}
+
+
+.scanlines:after, .scanlines:before {
+    content: " ";
+    display: block;
+    bottom: 0;
+}
