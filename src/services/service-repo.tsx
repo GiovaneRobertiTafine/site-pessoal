@@ -11,4 +11,9 @@ function getRepo(nomeRepo: string) {
         .then((response) => response.json());
 }
 
-export { getRepo };
+function getLanguages(url: string) {
+    return fetch(url, headers)
+        .then((response) => response.json());
+}
+
+export { getRepo, getLanguages };
