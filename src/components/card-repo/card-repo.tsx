@@ -46,8 +46,6 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
                 });
 
                 setLanguages(languagesRef);
-                console.log('languages', languages);
-                console.log('total', totalLangCount);
             });
     }, [data]);
 
