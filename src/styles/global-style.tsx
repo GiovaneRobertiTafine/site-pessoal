@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 // @ts-ignore
-import { styleReset } from 'react95';
+// import { styleReset } from 'react95';
 // @ts-ignore
 import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
 // @ts-ignore
