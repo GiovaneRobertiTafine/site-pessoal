@@ -13,7 +13,7 @@ import './card-repo.css';
 
 interface Languages {
     Nome: string;
-    Porct: number;
+    Count: number;
 }
 
 interface DadosCardRepo {
@@ -21,31 +21,33 @@ interface DadosCardRepo {
 }
 
 const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
-    const [nomeRepo, setNomeRepo] = useState(Nome);
     const [data, setData] = useState({});
     const [languages, setLanguages] = useState<Languages[]>([]);
 
+    const totalLangCount = useMemo(() => languages.reduce((total, val) => total + val.Count, 0), [languages]);
+
+    const percentage = (count, total) => ((count * 100) / total).toFixed(2) + '%';
+
     useEffect(() => {
-        getRepo(nomeRepo)
+        getRepo(Nome)
             .then(data => {
                 setData(data);
             });
-    }, [nomeRepo]);
+    }, [Nome]);
 
     useEffect(() => {
+        setLanguages([]);
+        console.log();
         getLanguages(data['languages_url'])
             .then(data => {
-                let total = 0;
                 const languagesRef: Languages[] = [];
-                Object.keys(data).map((key) => {
-                    total += data[key];
-
-                    languagesRef.push({ Nome: key, Porct: data[key] });
+                Object.keys(data).forEach((key) => {
+                    languagesRef.push({ Nome: key.toLowerCase(), Count: data[key] });
                 });
 
-                languagesRef.map((language, i, array) => {
-                    setLanguages((oldValues) => [...oldValues, { Nome: language.Nome.toLowerCase(), Porct: +((language.Porct * 100) / total).toFixed(2) }]);
-                });
+                setLanguages(languagesRef);
+                console.log('languages', languages);
+                console.log('total', totalLangCount);
             });
     }, [data]);
 
@@ -73,7 +75,7 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
                                     {
                                         languages.map((el, i) => {
                                             return (
-                                                <div className="progress-bar" id={el.Nome} key={i} style={{ width: el.Porct + '%' }}></div>
+                                                <div className="progress-bar" id={el.Nome} key={i} style={{ width: percentage(el.Count, totalLangCount) }}></div>
                                             );
                                         })
                                     }
