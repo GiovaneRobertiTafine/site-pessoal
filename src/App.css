@@ -42,7 +42,8 @@
 h1 {
     font-family:'VT323', Times, serif;
     margin-left: 10px;
-    position: absolute;
+    
+    /* position: absolute; */
 }
 
 .conteudo {
