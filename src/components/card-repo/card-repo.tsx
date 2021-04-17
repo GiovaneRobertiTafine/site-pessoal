@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 // @ts-ignore
-import { WindowContent, Window, Fieldset, Avatar, Tooltip, Button, Anchor } from 'react95';
+import { WindowContent, Window, Fieldset, Anchor } from 'react95';
 
 // Importando Servico
 import { getRepo, getLanguages } from "../../services/service-repo.service";
