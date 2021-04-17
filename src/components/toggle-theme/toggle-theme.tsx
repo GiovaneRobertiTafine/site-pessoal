@@ -5,6 +5,9 @@ import { ThemeProvider } from 'styled-components';
 // Importando contexto para theme
 import { ThemeContext } from '../../App';
 
+// @ts-ignore
+import { Tooltip } from 'react95';
+
 // Importando enums
 import { Themes } from "../../enums/themes.enum";
 
@@ -21,7 +24,6 @@ const ToggleTheme: React.FC<{ onClick; }> = ({ onClick }) => {
         } else {
             setTheme(Themes.fxDev);
         }
-        // console.log(themeState);
         return themeState;
     };
 
@@ -32,14 +34,19 @@ const ToggleTheme: React.FC<{ onClick; }> = ({ onClick }) => {
 
                     (themeState === Themes.original ?
                         (
-                            <span role='img' aria-label='sun'>
-                                ☀️
+                            <Tooltip text='Theme Sun' enterDelay={100} leaveDelay={500}>
+                                <span role='img' aria-label='sun'>
+                                    ☀️
                             </span>
+                            </Tooltip>
                         ) :
                         (
-                            <span role='img' aria-label='moon'>
-                                🌘
+                            <Tooltip text='Theme Moon' enterDelay={100} leaveDelay={500}>
+                                <span role='img' aria-label='moon'>
+                                    🌘
                             </span>
+
+                            </Tooltip>
 
                         )
 

@@ -62,11 +62,6 @@ fieldset {
     z-index: -1;
 }
 
-.progress-bar {
-    text-align: center;
-    color: #fff;
-}
-
 #html {
     background-color: #d9534f;
 }
@@ -78,4 +73,14 @@ fieldset {
 }
 #typescript {
     background-color: #2097a7;
+}
+
+.anchor-repo {
+    right: 10px;
+    position: absolute; 
+    top: 10px
+}
+
+.description {
+    margin-top: 0px;
 }

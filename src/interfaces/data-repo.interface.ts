@@ -7,4 +7,5 @@ export default interface DataRepo {
     };
     language: string;
     description: string;
+    html_url: string;
 }

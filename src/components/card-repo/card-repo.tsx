@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
 
 import { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 // @ts-ignore
-import { WindowContent, Window, Fieldset, Avatar } from 'react95';
+import { WindowContent, Window, Fieldset, Avatar, Tooltip, Button, Anchor } from 'react95';
 
 // Importando Servico
 import { getRepo, getLanguages } from "../../services/service-repo.service";
@@ -50,13 +51,38 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
             });
     }, [data]);
 
+    const ProgressBar = styled.div`
+        text-align: center;
+        color: #fff;
+
+    `;
+
+    const TooltipLang = styled.span`
+        width: auto;
+        height: auto;
+        display: none;
+        position: absolute;
+        top: 50%;
+        border: 2px solid black;
+        background-color: rgb(243,242,219);
+        box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 35%);
+        padding: 5px;
+        color: black;
+        margin: 0 auto;
+
+        ${ProgressBar}:hover &  {
+            display: inline-block;
+        }
+
+    `;
+
     return (
         <ThemeProvider theme={contextType['_currentValue']}>
             <Window className="window">
                 <WindowContent style={{ width: 'auto' }}>
                     <Fieldset label={
                         <span className="data-header">
-                            <Avatar size={50} src={data?.owner?.avatar_url} />
+                            {/* <Avatar size={50} src={data?.owner?.avatar_url} /> */}
                             <div>
                                 <span className="data-title">{data?.name}</span><br />
                                 <small>{data?.language}</small>
@@ -66,15 +92,27 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
                     }>
 
                         <article className="data-body">
-                            <small>Criado por {data?.owner?.login}</small><br /><br />
-                            {data?.description}
+                            {/* <small>Criado por {data?.owner?.login}</small><br /><br /> */}
+                            <Anchor href={data?.html_url} target='_blank' className="anchor-repo">
+                                {' '}
+                                Git Hub
+                            </Anchor>
+                            <br />
+                            <p className="description">
+                                {data?.description}
+
+                            </p>
 
                             <div className="progress-box">
                                 <div id="progress" className="progress">
                                     {
                                         languages.map((el, i) => {
                                             return (
-                                                <div className="progress-bar" id={el.Nome} key={i} style={{ width: percentage(el.Count, totalLangCount) }}></div>
+                                                <ProgressBar key={i} style={{ width: percentage(el.Count, totalLangCount) }} id={el.Nome}>
+                                                    <TooltipLang>
+                                                        {el.Nome}
+                                                    </TooltipLang>
+                                                </ProgressBar>
                                             );
                                         })
                                     }
