@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 // @ts-ignore
-import { WindowContent, Window, Fieldset, Anchor } from 'react95';
+import { WindowContent, Window, Fieldset, Anchor, Hourglass } from 'react95';
 
 // Importando Servico
 import { getRepo, getLanguages } from "../../services/service-repo.service";
@@ -20,6 +20,30 @@ import DataRepo from "../../interfaces/data-repo.interface";
 interface DadosCardRepo {
     Nome: string;
 }
+const ProgressBar = styled.div`
+        text-align: center;
+        color: #fff;
+
+`;
+
+const TooltipLang = styled.span`
+    width: auto;
+    height: auto;
+    display: none;
+    position: absolute;
+    top: 50%;
+    border: 2px solid black;
+    background-color: rgb(243,242,219);
+    box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 35%);
+    padding: 5px;
+    color: black;
+    margin: 0 auto;
+
+    ${ProgressBar}:hover &  {
+        display: inline-block;
+    }
+
+`;
 
 const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
     const contextType = ThemeContext;
@@ -35,11 +59,10 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
             .then(data => {
                 setData(data);
             });
+
     }, [Nome]);
 
     useEffect(() => {
-        setLanguages([]);
-        console.log();
         getLanguages(data?.languages_url)
             .then(data => {
                 const languagesRef: Languages[] = [];
@@ -51,30 +74,8 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
             });
     }, [data]);
 
-    const ProgressBar = styled.div`
-        text-align: center;
-        color: #fff;
 
-    `;
 
-    const TooltipLang = styled.span`
-        width: auto;
-        height: auto;
-        display: none;
-        position: absolute;
-        top: 50%;
-        border: 2px solid black;
-        background-color: rgb(243,242,219);
-        box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 35%);
-        padding: 5px;
-        color: black;
-        margin: 0 auto;
-
-        ${ProgressBar}:hover &  {
-            display: inline-block;
-        }
-
-    `;
 
     return (
         <ThemeProvider theme={contextType['_currentValue']}>
@@ -100,8 +101,19 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
                             <br />
                             <p className="description">
                                 {data?.description}
-
                             </p>
+
+                            {
+                                (
+                                    !data ?
+                                        <p id="hourglass-repo">
+                                            <Hourglass size={32} />
+                                        </p>
+                                        :
+                                        ''
+
+                                )
+                            }
 
                             <div className="progress-box">
                                 <div id="progress" className="progress">

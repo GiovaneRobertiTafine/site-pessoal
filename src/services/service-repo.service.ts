@@ -1,19 +1,32 @@
-const path = 'https://api.github.com/repos/mandrilla34'; // API
+import { pathRepo, path } from "./api";
+import DataRepo from "../interfaces/data-repo.interface";
+import Languages from "../interfaces/languages.interface";
 
-const headers: RequestInit = {
-    method: 'get',
-    mode: 'cors',
-    cache: 'default'
+
+const getRepo = async (nomeRepo: string): Promise<DataRepo> => {
+    // return fetch(`${pathRepo}/${nomeRepo}`, headers) // fetch é mais simples mas não é recomendado por questão de segurança
+    //     .then((response) => response.json());
+    return await pathRepo.get<DataRepo>(`/${nomeRepo}`)
+        .then(
+            (response) => response.data
+        )
+        .catch((err) => {
+            if (err.response) {
+                console.log(err.response.data);
+                console.log(err.response.status);
+                console.log(err.response.headers);
+            }
+            return null;
+        });
+
+
 };
 
-function getRepo(nomeRepo: string) {
-    return fetch(`${path}/${nomeRepo}`, headers) // fetch é mais simples mas não é recomendado por questão de segurança
-        .then((response) => response.json());
-}
+const getLanguages = async (url: string): Promise<Languages[]> => {
+    if (!url) return [];
+    return await path.get<Languages[]>(url)
+        .then((response) => response.data);
 
-function getLanguages(url: string) {
-    return fetch(url, headers)
-        .then((response) => response.json());
-}
+};
 
 export { getRepo, getLanguages };

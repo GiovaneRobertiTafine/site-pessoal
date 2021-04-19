@@ -84,3 +84,8 @@ fieldset {
 .description {
     margin-top: 0px;
 }
+
+#hourglass-repo {
+    display: flex;
+    justify-content: center;
+}
