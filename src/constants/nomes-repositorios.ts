@@ -1,6 +1,7 @@
 const nomesRepositorios = [
     'tic-tac-toe',
-    'search-bar'
+    'search-bar',
+    'snake-game'
 ];
 
 export default nomesRepositorios;

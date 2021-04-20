@@ -94,7 +94,7 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
 
                         <article className="data-body">
                             {/* <small>Criado por {data?.owner?.login}</small><br /><br /> */}
-                            <Anchor href={data?.html_url} target='_blank' className="anchor-repo">
+                            <Anchor rel="noopener" href={data?.html_url} target='_blank' className="anchor-repo">
                                 {' '}
                                 Git Hub
                             </Anchor>
@@ -135,6 +135,7 @@ const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
 
                 </WindowContent>
             </Window>
+
         </ThemeProvider>
     );
 };

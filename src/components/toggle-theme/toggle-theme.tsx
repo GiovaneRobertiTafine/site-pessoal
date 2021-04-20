@@ -43,7 +43,7 @@ const ToggleTheme: React.FC<{ onClick; }> = ({ onClick }) => {
                         (
                             <Tooltip text='Theme Moon' enterDelay={100} leaveDelay={500}>
                                 <span role='img' aria-label='moon'>
-                                    🌘
+                                    🌑
                             </span>
 
                             </Tooltip>

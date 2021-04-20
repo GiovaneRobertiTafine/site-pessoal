@@ -32,8 +32,8 @@ function App() {
     return (
         <Fragment>
             <ThemeContext.Provider value={theme}>
-                <div style={{ display: 'flex', justifyContent: 'start', gap: '10px', alignItems: 'center' }}>
-                    <h1>Giovane Roberti Tafine</h1>
+                <div className="d-flex justify-content-start align-items-center">
+                    <h1 className="mr-3">Giovane Roberti Tafine</h1>
 
                     <ToggleTheme onClick={handleChange} />
 
@@ -42,7 +42,7 @@ function App() {
                 <option value="fxDev">fxDev</option>
                 <option value="window1">original</option>
             </select> */}
-                <div className="conteudo">
+                <div className="container">
                     <GlobalStyles />
                     {/* <ThemeProvider theme={fxDev}>
                     <a href="https://github.com/mandrilla34" target="_blank"><Button primary>GitHub</Button></a>
@@ -52,15 +52,21 @@ function App() {
                 <a href="mailto:kstv23@hotmail.com?subject=Olá"><button>kstv23@hotmail.com</button></a>
                 <br /> */}
                     {/* <div className="github-card" data-user="mandrilla34" data-repo="tic-tac-toe"></div> */}
+                    <div className="row">
 
-                    {
-                        nomesRepositorios.map((nome, i) => {
-                            return (
-                                <CardRepo Nome={nome} key={i} />
+                        {
+                            nomesRepositorios.map((nome, i) => {
+                                return (
+                                    <div className="my-3 col-12 col-sm-12 col-lg-6 col-xl-4" key={i} style={{ textAlign: 'center' }}>
+                                        <CardRepo Nome={nome} />
 
-                            );
-                        })
-                    }
+                                    </div>
+
+                                );
+                            })
+                        }
+
+                    </div>
                 </div>
 
 
@@ -70,6 +76,7 @@ function App() {
             </section> */}
 
             </ThemeContext.Provider>
+            <br />
         </Fragment>
     );
 }

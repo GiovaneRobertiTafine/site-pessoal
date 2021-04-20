@@ -1,7 +1,14 @@
 .window {
-    width: 300px;
+    width: 100%;
     padding-top: 10px !important;
     min-height: 180px;
+}
+
+@media (max-width: 992px) {
+    .window {
+        width: 90%;
+    }
+
 }
 
 fieldset {
@@ -14,6 +21,10 @@ fieldset {
     align-items: center;
     gap: 10px;
     text-align: left;
+}
+
+fieldset > legend {
+    width: auto;
 }
 
 .data-title {

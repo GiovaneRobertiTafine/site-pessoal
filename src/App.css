@@ -47,7 +47,7 @@ h1 {
 }
 
 .conteudo {
-    text-align: center;
+    /*  text-align: center;
     position: relative;
     height: 100vh; 
     width: 100%;
@@ -55,7 +55,16 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 10px; */
+    width: 70% !important;
+}
+
+
+@media (max-width: 992px) {
+    .conteudo {
+        width: 100% !important;
+    }
+
 }
 
 button {
@@ -126,45 +135,3 @@ button {
     bottom: 0;
 }
 
-.progress {
-    height: 1.5rem;
-    overflow: hidden;
-    background-color: grey;
-    /* border-radius: .25rem; */
-    display: flex;
-    border-top: #333 solid 3px;
-    border-left: #333 solid 3px;
-    border-bottom: #ccc solid 3px;
-    border-right: #ccc solid 3px;
-}
-
-.progress::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    /* background: rgb(204,204,204);
-    background: linear-gradient(135deg, rgba(204,204,204,1) 0%, rgba(204,204,204,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%); */
-    border-top: #ccc solid 3px;
-    border-left: #ccc solid 3px;
-    border-bottom: #fff solid 3px;
-    border-right: #fff solid 3px;
-    z-index: -1;
-}
-
-.progress-bar {
-    text-align: center;
-    color: #fff;
-}
-
-.bg-weak {
-    background-color: #d9534f;
-}
-.bg-good {
-    background-color: #f0ad4e!important;
-}
-.bg-strong {
-    background-color: #5cb85c!important;
-}
