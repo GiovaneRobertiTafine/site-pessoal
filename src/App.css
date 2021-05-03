@@ -40,9 +40,9 @@
 
 
 h1 {
-    font-family:'VT323', Times, serif;
+    font-family:'VT323', Times, serif !important;
     margin-left: 10px;
-    
+    font-size: 2rem;
     /* position: absolute; */
 }
 

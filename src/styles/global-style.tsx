@@ -19,10 +19,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     font-style: normal
   }
-  .conteudo {
+  body {
     font-family: 'ms_sans_serif';
 
-}
+  }
+
 `;
 // ${styleReset}
 
