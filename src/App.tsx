@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import './App.css';
 
+import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyles from "./styles/global-style";
+import { lightTheme, darkTheme } from './styles/theme';
 
 // Import Components 
 import ToggleTheme from './components/toggle-theme/toggle-theme';
@@ -16,6 +18,57 @@ import Routes from './routes';
 
 export const ThemeContext = React.createContext(fxDev);
 
+
+const Content = styled.div`
+    height: 100vh;  
+
+    ${window.location.pathname === '/repositories' ?
+        `
+        padding-top: 5%;
+        align-items: inherit;
+        justify-content: inherit;
+        `:
+        `
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        `
+    }
+
+    @media (max-width: 991px) {
+        align-items: inherit;
+        justify-content: inherit;
+
+        &::after, &::before {
+            content: ${window.location.pathname === '/repositories' ? '' : 'none'};
+            margin: auto;
+        }
+
+        padding-top: 5%;
+    }
+`;
+
+const ToogleContainer = styled.div`
+    z-index: 1000;
+    position: absolute;
+    right: 30%;
+    top: 32%;
+
+    @media (max-width: 991px) {
+    ${window.location.pathname === '/repositories' ?
+        `
+            left: 80%;
+        `
+        :
+        `
+            top: 5%;
+            right: 30%;
+        `
+    }
+    }
+
+`;
+
 function App() {
     const [theme, setTheme] = useState(fxDev);
 
@@ -28,20 +81,20 @@ function App() {
     }
 
     return (
-        <Fragment>
-            <GlobalStyles />
-            <ThemeContext.Provider value={theme}>
-                <div className="d-flex justify-content-start align-items-center position-absolute">
-                    <h1 className="mr-3">Giovane Roberti Tafine</h1>
+        <ThemeContext.Provider value={theme}>
+            <ThemeProvider theme={theme?.name === Themes[Themes.fxDev] ? darkTheme : lightTheme}>
+                <>
+                    <GlobalStyles />
+                    <Content className="w-100 container d-flex flex-column">
+                        <ToogleContainer>
+                            <ToggleTheme onClick={handleChange} />
 
-                    <ToggleTheme onClick={handleChange} />
-
-                </div>
-                <div className="border pt-5  w-100 border-primary" style={{ height: 'auto' }}>
-                    <Routes />
-                </div>
-            </ThemeContext.Provider>
-        </Fragment>
+                        </ToogleContainer>
+                        <Routes />
+                    </Content>
+                </>
+            </ThemeProvider>
+        </ThemeContext.Provider>
     );
 }
 

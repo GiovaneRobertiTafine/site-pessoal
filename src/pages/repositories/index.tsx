@@ -9,7 +9,7 @@ import nomesRepositorios from "../../constants/nomes-repositorios";
 export default function Repositories() {
     return (
         <Fragment>
-            <div className="container border">
+            <div className="container">
                 <div className="row">
 
                     {
