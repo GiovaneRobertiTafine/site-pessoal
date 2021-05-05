@@ -1,12 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import './App.css';
 
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyles from "./styles/global-style";
 import { lightTheme, darkTheme } from './styles/theme';
-
-// Import Components 
-import ToggleTheme from './components/toggle-theme/toggle-theme';
 
 // Importando enums
 import { Themes } from "./enums/themes.enum";
@@ -14,7 +11,11 @@ import { Themes } from "./enums/themes.enum";
 import fxDev from "react95/dist/themes/fxDev";
 import original from "react95/dist/themes/original";
 
+import { useSelector } from "react-redux";
+
+
 import Routes from './routes';
+import ThemeStore from './interfaces/theme-store.interface';
 
 export const ThemeContext = React.createContext(fxDev);
 
@@ -23,7 +24,7 @@ const Content = styled.div`
     height: 100vh;  
 
     ${window.location.pathname === '/repositories' ?
-        `
+        ` 
         padding-top: 5%;
         align-items: inherit;
         justify-content: inherit;
@@ -36,61 +37,46 @@ const Content = styled.div`
     }
 
     @media (max-width: 991px) {
-        align-items: inherit;
-        justify-content: inherit;
+        align-items: center;
+        justify-content: inherit !important;
 
         &::after, &::before {
-            content: ${window.location.pathname === '/repositories' ? '' : 'none'};
-            margin: auto;
+            content: '';
+            margin: auto !important;
         }
 
         padding-top: 5%;
     }
 `;
 
-const ToogleContainer = styled.div`
-    z-index: 1000;
-    position: absolute;
-    right: 30%;
-    top: 32%;
-
-    @media (max-width: 991px) {
-    ${window.location.pathname === '/repositories' ?
-        `
-            left: 80%;
-        `
-        :
-        `
-            top: 5%;
-            right: 30%;
-        `
-    }
-    }
-
-`;
-
 function App() {
-    const [theme, setTheme] = useState(fxDev);
-
-    function handleChange(theme) {
-        if (theme === Themes.fxDev) {
-            setTheme(fxDev);
+    const theme = useSelector((state: ThemeStore) => {
+        console.log(state.value);
+        if (state?.value === Themes.fxDev) {
+            return fxDev;
         } else {
-            setTheme(original);
+            return original;
         }
-    }
+    });
 
     return (
         <ThemeContext.Provider value={theme}>
-            <ThemeProvider theme={theme?.name === Themes[Themes.fxDev] ? darkTheme : lightTheme}>
+            <ThemeProvider theme={theme['name'] === Themes[Themes.fxDev] ? darkTheme : lightTheme}>
                 <>
                     <GlobalStyles />
                     <Content className="w-100 container d-flex flex-column">
-                        <ToogleContainer>
-                            <ToggleTheme onClick={handleChange} />
+                        <div className="row w-100">
+                            <div className="col d-flex">
+                                <div className="toggle-theme">
 
-                        </ToogleContainer>
+
+
+                                </div>
+                            </div>
+                        </div>
                         <Routes />
+
+
                     </Content>
                 </>
             </ThemeProvider>

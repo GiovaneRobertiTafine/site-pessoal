@@ -2,14 +2,14 @@ import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
     colors: {
-        body: '#E2E2E2',
+        body: 'teal',
         text: '#363537',
     },
 };
 
 export const darkTheme: DefaultTheme = {
     colors: {
-        body: '#363537',
+        body: 'darkslategray',
         text: '#FAFAFA',
     },
 };

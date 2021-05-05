@@ -1,12 +1,14 @@
-import styled, { createGlobalStyle, css, DefaultTheme } from 'styled-components';
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 // @ts-ignore
-// import { styleReset } from 'react95';
+import { styleReset } from 'react95';
 // @ts-ignore
 import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
 // @ts-ignore
 import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 
 const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme; }>`
+${styleReset}
+
   @font-face {
     font-family: 'ms_sans_serif';
     src: url('${ms_sans_serif}') format('woff2');
@@ -26,6 +28,5 @@ const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme; }>`
   }
 
 `;
-// ${styleReset}
 
 export default GlobalStyles;

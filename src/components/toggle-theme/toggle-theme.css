@@ -1,3 +1,72 @@
 .button-theme {
     cursor: pointer;
 }
+
+/*Simple css to style it like a toggle switch*/
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  
+    
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 1.4rem;
+    position: relative;
+    width: 3rem;
+}
+  
+.theme-switch input {
+    display:none;
+}
+  
+.slider {
+    background-color: #8f6d86;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.slider::before {
+    background-color: #39424D;
+    border: 0.2rem solid #1B2127;
+    content: "";
+    height: 1.4rem;
+    /* bottom: 0.1rem; */
+    /* left: 0.2rem; */
+    position: absolute;
+    transition: .4s;
+    width: 1.4rem;
+}
+
+input:checked + .slider {
+    background-color: #413c3f;
+}
+  
+input:checked + .slider:before {
+    transform: translateX(1.7rem);
+    background-color: #C6C6C6;
+    border: 0.2rem solid #848584;
+}
+  
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.icon-theme {
+    font-family: none !important;
+    font-size: 1rem !important;
+}
+  

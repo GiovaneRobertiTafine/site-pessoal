@@ -35,3 +35,18 @@
     }
 
 }
+
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+  .window {
+    width: 400px;
+    min-height: 200px;
+  }
+  .window:nth-child(2) {
+    margin: 2rem;
+  }
