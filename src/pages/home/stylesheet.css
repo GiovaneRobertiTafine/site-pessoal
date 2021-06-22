@@ -1,8 +1,18 @@
 .avatar {
     position: relative;
-    left: 3rem;
     z-index: 100;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+}
+
+.avatar-theme {
+    left: 5rem
+}
+
+.toggle-theme {
+    z-index: 100;
+    position: relative;
+    /* top: 3rem; */
+    right: 1rem;
 }
 
 .nome {
@@ -24,14 +34,27 @@
 
     .avatar {
         margin-top: 0px;
-        left: auto;
         width: 10rem !important;
         height: 10rem !important;
     }
 
+    .avatar-theme {
+        left: auto;
+    }
+
+    /* .toggle-theme {
+        right: auto;
+        left: -1rem;
+        top: 4rem;
+    } */
+
     .panel {
         padding: 1rem 2rem 2rem 2rem;
         width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        line-height: 40px !important; 
     }
 
 }
@@ -50,3 +73,5 @@
   .window:nth-child(2) {
     margin: 2rem;
   }
+
+  

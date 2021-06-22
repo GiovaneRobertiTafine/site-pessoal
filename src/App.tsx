@@ -51,7 +51,6 @@ const Content = styled.div`
 
 function App() {
     const theme = useSelector((state: ThemeStore) => {
-        console.log(state.value);
         if (state?.value === Themes.fxDev) {
             return fxDev;
         } else {
@@ -65,15 +64,6 @@ function App() {
                 <>
                     <GlobalStyles />
                     <Content className="w-100 container d-flex flex-column">
-                        <div className="row w-100">
-                            <div className="col d-flex">
-                                <div className="toggle-theme">
-
-
-
-                                </div>
-                            </div>
-                        </div>
                         <Routes />
 
 

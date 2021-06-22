@@ -45,7 +45,7 @@ const TooltipLang = styled.span`
 
 `;
 
-const CardRepo: React.FC<DadosCardRepo> = ({ Nome }) => {
+const CardRepo = ({ Nome }: DadosCardRepo) => {
     const contextType = ThemeContext;
     const [data, setData] = useState<DataRepo>(null);
     const [languages, setLanguages] = useState<Languages[]>([]);
